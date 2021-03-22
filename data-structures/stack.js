@@ -1,32 +1,29 @@
 //data type LIFO (Last In First Out)
 
-function Stack() {
-	this.data = [];
+class Stack {
+	constructor() {
+		this.data = [];
+	}
+	add(element) {
+		this.data.push(element);
+	}
+	remove() {
+		return this.data.pop();
+	}
+	view() {
+		return this.data[(this.data.length) - 1];
+	}
+	reset() {
+		this.data = [];
+	}
+	size() {
+		return this.data.length;
+	}
+	isPopulated() {
+		return this.data.length != 0;
+	}
 }
 
-Stack.prototype.add = function(element) {
-	this.data.push(element);
-}
-
-Stack.prototype.remove = function() {
-	return this.data.pop();
-}
-
-Stack.prototype.view = function() {
-	return this.data[(this.data.length)-1];
-}
-
-Stack.prototype.reset = function() {
-	this.data = [];
-}
-
-Stack.prototype.size = function() {
-	return this.data.length;
-}
-
-Stack.prototype.isPopulated = function() {
-	return this.data.length != 0;
-}
 
 const books = new Stack;
 console.log(`new book stack - isPopulated: ${books.isPopulated()}`);

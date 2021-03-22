@@ -1,82 +1,70 @@
 // List has implementation in javaScript - array
 // below own implementation
 
-function List() {
-  this.listElements = [];
-  this.listSize = 0;
-  this.pos = 0;
-}
-List.prototype.append = function (element) {
-  this.listElements[this.listSize++] = element;
-};
-
-List.prototype.find = function (element) {
-  for (var i = 0; i < this.listElements.length; i++) {
-    if (this.listElements[i] == element) {
-      return i;
+class List {
+  constructor() {
+    this.listElements = [];
+    this.listSize = 0;
+    this.pos = 0;
+  }
+  append(element) {
+    this.listElements[this.listSize++] = element;
+  }
+  find(element) {
+    for (var i = 0; i < this.listElements.length; i++) {
+      if (this.listElements[i] == element) {
+        return i;
+      }
+    }
+    return -1;
+  }
+  remove(element) {
+    var elemPos = this.find(element);
+    if (elemPos > -1) {
+      this.listElements.splice(elemPos, 1);
+      this.listSize--;
     }
   }
-  return -1;
-};
-
-List.prototype.remove = function (element) {
-  var elemPos = this.find(element);
-  if (elemPos > -1) {
-    this.listElements.splice(elemPos, 1);
-    this.listSize--;
+  length() {
+    return this.listSize;
   }
-};
-
-List.prototype.length = function () {
-  return this.listSize;
-};
-
-List.prototype.view = function () {
-  return this.listElements;
-};
-
-
-List.prototype.insert = function (element, after) {
-  var afterPos = this.find(after);
-  if (afterPos > -1) {
-    this.listElements.splice(afterPos + 1, 0, element);
-    this.listSize++;
+  view() {
+    return this.listElements;
   }
-};
-
-List.prototype.contains = function (element) {
-  var elemPos = this.find(element);
-  if (elemPos > -1) {
-    return true;
-  } else {
-    return false;
+  insert(element, after) {
+    var afterPos = this.find(after);
+    if (afterPos > -1) {
+      this.listElements.splice(afterPos + 1, 0, element);
+      this.listSize++;
+    }
   }
-};
-
-List.prototype.moveTo = function (position) {
-  this.pos = position;
-};
-
-List.prototype.getElem = function () {
-  return this.listElements[this.pos];
-};
-
-List.prototype.previous = function () {
-  return this.listElements[--this.pos];
-};
-
-List.prototype.next = function () {
-  return this.listElements[this.pos++];
-};
-
-List.prototype.front = function () {
-  this.pos = 0;
-};
-
-List.prototype.end = function () {
-  this.pos = this.listSize - 1;
-};
-
+  contains(element) {
+    var elemPos = this.find(element);
+    if (elemPos > -1) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+  moveTo(position) {
+    this.pos = position;
+  }
+  getElem() {
+    return this.listElements[this.pos];
+  }
+  previous() {
+    return this.listElements[--this.pos];
+  }
+  next() {
+    return this.listElements[this.pos++];
+  }
+  front() {
+    this.pos = 0;
+  }
+  end() {
+    this.pos = this.listSize - 1;
+  }
+}
 
 const toDoList = new List;
 console.log(`new toDoList list - view: ${toDoList.view()}`);

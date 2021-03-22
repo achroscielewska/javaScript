@@ -1,35 +1,30 @@
 //data type FIFO (First In, First Out)
 
-function Queue() {
-  this.data = [];
-}
-
-Queue.prototype.enqueue = function (elem) {
-  this.data.push(elem);
-};
-
-Queue.prototype.dequeue = function () {
-  return this.data.shift();
-};
-
-Queue.prototype.viewAll = function () {
-  return this.data.join(", ");
-};
-
-Queue.prototype.front = function () {
-  return this.data[0];
-};
-
-Queue.prototype.queueLength = function () {
-  return this.data.length;
-};
-
-Queue.prototype.isEmpty = function () {
-  return this.data.length === 0 ? true : false;
-};
-
-Queue.prototype.reset = function() {
-	this.data = [];
+class Queue {
+  constructor() {
+    this.data = [];
+  }
+  enqueue(elem) {
+    this.data.push(elem);
+  }
+  dequeue() {
+    return this.data.shift();
+  }
+  viewAll() {
+    return this.data.join(", ");
+  }
+  front() {
+    return this.data[0];
+  }
+  queueLength() {
+    return this.data.length;
+  }
+  isEmpty() {
+    return this.data.length === 0 ? true : false;
+  }
+  reset() {
+    this.data = [];
+  }
 }
 
 const ticketsQueue = new Queue;
