@@ -20,5 +20,7 @@ let a = [];
 for( let i=0; i<10; i++) {
     a[i] = Math.floor(Math.random()*100+1);
 }
-
+console.log("Array to quick sort");
+console.log(a);
+console.log("Array after quick sort");
 console.log(quickSort(a));

@@ -35,6 +35,7 @@ List.prototype.view = function () {
   return this.listElements;
 };
 
+
 List.prototype.insert = function (element, after) {
   var afterPos = this.find(after);
   if (afterPos > -1) {
